@@ -1,35 +1,29 @@
-$(function() {
-  $("form[name='registration']").validate({
-    
-    rules: {
-      text: "required",
-      password: "required",
-      email: {
-        required: true,
-        // Specify that email should be validated
-        // by the built-in "email" rule
-        email: true
+$(function(){
+  var $loginForm = $("#login");
+  if ($loginForm.length){
+    $loginForm.validate({
+      rules:{
+        username:{
+          required: true
+        },
+        password:{
+          required: true
+        },
+        email: { 
+          required: true
+        },
       },
-      password: {
-        required: true,
-        minlength: 5
+      messages:{
+        username:{
+          required: "You cannot leave this field empty!"
+        },
+        password:{
+          required: "You cannot leave this field empty!"
+        },
+        email:{
+          required: "You cannot leave this field empty!"
+        },
       }
-    },
-    // Specify validation error messages
-    messages: {
-      text: "Please enter your username",
-      password: "password",
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      email: "Please enter a valid email address"
-    },
-    // Make sure the form is submitted to the destination defined
-    // in the "action" attribute of the form when valid
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
-});
-
+    })
+  }
+})
